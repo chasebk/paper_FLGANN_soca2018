@@ -82,15 +82,20 @@ The organization of this paper is as follows. In Section~\ref{related_work}, we 
 \section{Related Work}
 \label{related_work}
 
-The main goal of proactive resource provision techniques is to predict precisely the resource consumptions in advance. There are a huge research number that have dealt in forecast models for cloud computing. In~\cite{ref_hipel}, several prediction methods including autoregressive (AR), moving average (MA), exponential smoothing, error-trendseasonal (ETS), automated autoregressive integrated moving average (ARIMA) and back-propagation neural networks (BPNN) were evaluated and compared in predicting cloud workloads. 
+The main goal of proactive resource provision techniques is to predict precisely the resource consumptions in advance. There are a huge research number that have dealt in forecast models for cloud computing. In [14], several models of predictive time series are
+proposed and demonstrated such as ARMA (autoregressive-moving average),
+nonstationary, long memory, three families of seasonal, multiple input-output,
+intervention and multivariate ARMA models for predicting cloud workloads.
 
-Recently, deep learning has emerged as an effective solution for prediction problem. In terms of applying to clouds, Jitendra et al.~\cite{ref_kumar} used the long-short term memory - recurrent neural network (LSTM-RNN) model for required resources forecast in cloud data-centers using NASA dataset. Although deep learning brings significant effectiveness for the cloud proactive auto-scaling issue, these learning models often have very complex structure and require a long time for training process. In this way, few other artificial networks have been proposed to overcome the disadvantages. Functional Link Neural Network is a representation for that simple neural network group.
+In~\cite{ref_hipel}, several prediction methods including autoregressive (AR), moving average (MA), autoregressive-moving average (ARMA), nonstationary, long memory, three families of seasonal, multiple input-output, intervention and multivariate ARMA models were evaluated and compared in predicting cloud workloads. 
 
-FLNN has a single neuron is proposed by Pao~\cite{ref_pao} in pattern-recognition task. The author pointed out that FLNN has less computational cost and can be easily implemented in hardware applications. The reason is that hidden layer in this network is eliminated. In this way, nonlinear relationship between the inputs and outputs (often provided by the input layer in traditional neural network) is processed via a set of functional expansions (i.e. polynomials). FLNN has been used in several applications such as stock market~\cite{ref_majhi}, and exchange rate prediction~\cite{ref_rout}. In their work, Khandelwal et al.~\cite{ref_khan} used 4 datasets from 4 different areas to test the forecasting ability of FLNN, namely: average monthly temperature in New Delhi, India; monthly turnover in services in Spain; monthly Australian wine sales; and monthly mining data of India. In comparison with multi-layer neural network (MLNN), the authors' obtained results indicate that FLNN model provides better outcomes for all 4 datasets. In~\cite{ref_sahoo}, D.M Sahoo and S. Chakraverty used FLNN for structural response prediction of tall buildings due to seismic loads. They used along with efficient Chebyshev and Legendre polynomials. Also in this work, FLNN's outcomes also are compared with MLNN's prediction results and they showed that FLNN gives better accuracy and takes less computation time as compared to MLNN.
+Recently, deep learning has emerged as an effective solution for prediction problem. In terms of applying to clouds, Prevost et al.~\cite{ref_prevost} used the Multi-layer neural network (MLNN) model for prediction URL resource requests of a WWW server at NASA and WWW server at EPA. Although deep learning brings significant effectiveness for the cloud proactive auto-scaling issue, these learning models often have very complex structure and require a long time for training process to get high performance. In this way, few other artificial networks have been proposed to overcome the disadvantages. Functional Link Neural Network is a representation for that simple neural network group.
 
-However, the proposed prediction systems using FLNN listed above which still use back-propagation technique with gradients descent to train learning model. S. Dehuri at el. in~\cite{ref_dehuri} figured out that the main drawbacks of back-propagation are slow training speed and local minimum traps. Moreover, performance of the training algorithm depends on initial values of weights and learning rate parameters. In comparison with those existing works, the main difference given in this study is that we exploit a herd evolution algorithm to solve back propagation disadvantages in traditional FLNN. 
+FLNN has a single neuron is proposed by Pao~\cite{ref_pao} in pattern-recognition task. The author pointed out that FLNN has less computational cost and can be easily implemented in hardware applications. The reason is that hidden layer in this network is eliminated. In this way, nonlinear relationship between the inputs and outputs is processed via a set of functional expansions (i.e. polynomials). FLNN has been used in several applications such as stock market~\cite{ref_majhi}, and exchange rate prediction~\cite{ref_rout}. In their work, Khandelwal et al.~\cite{ref_khan} used 4 datasets from 4 different areas to test the forecasting ability of FLNN and in comparison with MLNN, the authors' obtained results indicate that FLNN model provides better outcomes for all 4 datasets. In~\cite{ref_sahoo}, Sahoo et al used efficient Chebyshev and Legendre polynomials in combination as Functional-Link, the FLNN's outcomes gives better accuracy and takes less computation time as compared to MLNN's outcomes.
 
-Genetic algorithm is one of optimization mechanisms for large and complex spaces in order to find values, which are close to the global optimum. Hence, GA suits the problem of training feed-forward networks~\cite{ref_motana}. In this direction, applying GA to diverse neural network variants have been proposed long time ago. In~\cite{ref_blanco}, Blanco et al. used GA-based approach to selected the features and optimized the appropriate classifier parameters of neural network and vector machines for bearing fault detection from time-domain vibration signals. In~\cite{ref_samanta}, Samata et al. has done a Real-Coded GA that used the appropriate operators for encoding type to train RNN. In their work~\cite{ref_dehuri_2}, Dehuri et al. employed GA to choose an optimal subset of input features in FLNN and radial basis function neural network (RBFNN). Until now, there are no works, which use GA to train FLNN instead of back-propagation algorithm. 
+However, the proposed prediction systems using FLNN listed above which still use back-propagation technique with gradients descent to train learning model. S. Dehuri at el. in~\cite{ref_dehuri} figured out that the main drawbacks of back-propagation are slow training speed and local minimum traps. In comparison with those existing works, the main difference given in this study is that we exploit a herd evolution algorithm to solve back propagation disadvantages in traditional FLNN. 
+
+Genetic algorithm is one of optimization mechanisms for large and complex spaces in order to find values, which are close to the global optimum. Hence, GA suits the problem of training feed-forward networks~\cite{ref_motana}. In this direction, applying GA to diverse neural network variants have been proposed long time ago. In~\cite{ref_blanco}, Blanco et al. used GA-based approach to selected the features and optimized the appropriate classifier parameters of neural network and vector machines for bearing fault detection from time-domain vibration signals. In their work~\cite{ref_dehuri_2}, Dehuri et al. employed GA to choose an optimal subset of input features in FLNN and radial basis function neural network (RBFNN). Until now, there are no works, which use GA to train FLNN instead of back-propagation algorithm. 
 
 In the aspect of dealing with multivariate time series problem in cloud computing, in~\cite{ref_dang}, the authors proposed MF-GABPNN model to mine the relationship among different metric types in forecast process. Thus, the authors choose CPU and memory as multivariate time-series to test their proposed model. Going further, in~\cite{ref_nhuan}, Nhuan et al. proved that there is a relation among different metric types and through analyzing data correlation, the authors select appropriate time series data metrics to put into LSTM-RNN prediction model. However, so far, there are no any studies that use FLNN for multivariate time series data prediction for cloud computing. As compared with the existing works presented above, our differences and contributions include:
 
@@ -117,7 +122,7 @@ A novel learning method is proposed in our Trainer module using FLNN that is a v
 After the training process finishes, trained model is used to predict future resource consumption in Forecaster. 
 
 \begin{figure*}[htbp]
-	\centerline{\includegraphics[width=0.7\textwidth =0.1cm 0.1cm 0.1cm 0.1cm, clip]{images/FLGANN.pdf}}
+	\centerline{\includegraphics[width=0.7\textwidth =0.1cm 0.1cm 0.1cm 0.1cm, clip]{images/FLGANN_process.pdf}}
 	\caption{FL-GANN training process}
 	\label{FLGANN_process}
 \end{figure*}
@@ -144,10 +149,10 @@ There are many expansion functions, however the most popular are Chebyshev, Lege
 
 \subsection{Trainer module}
 \label{learning_model}
-This module consists of two main components, covering a neural network with single unit and GA, which is used to train the network. The functional link of FLNN are deployed in Preprocessor as presented in Subsection~\ref{pre_precessor}. Figure~\ref{FLGANN_process} describes general training process of our proposed FL-GANN model. Because the requirement of GA is a fitness function, we calculate Mean Absolute Error (MAE) based on error of training data according to formula (\ref{eq_MAE}). The fitness function is reckoned by equation (\ref{eq_fitness}). Operations of GA in FL-GANN model are introduced via Algorithm~\ref{algo_GA}.
+This module consists of two main components, covering a neural network with single unit and GA, which is used to train the network. The functional link of FLNN are deployed in Preprocessor as presented in Subsection~\ref{pre_precessor}. Figure~\ref{FLGANN_process} describes general training process of our proposed FL-GANN model. In Fig.~\ref{FLGANN_process}, there is a component Encoder, which real-value encodes the weights and bias of network into a chromosome (real-value vector), while the Decoder component decoded the chromosome into the weights and bias of network. Because the requirement of GA is a fitness function, we calculate Mean Absolute Error (MAE) based on error of training data according to formula (\ref{eq_MAE}). The fitness function is reckoned by equation (\ref{eq_fitness}). Operations of GA in FL-GANN model are introduced via Algorithm~\ref{algo_GA}.
 
 \begin{algorithm}[h]
-	\caption{Combination of GA with FL-GANN}\label{algo_GA}
+	\caption{GANN Training Algorithm}\label{algo_GA}
 	\hspace*{\algorithmicindent} \textbf{Input:} 
 	\textbf{ $p_s$ } - the population size \\
 	\hspace*{\algorithmicindent} \textbf{$d$} - problem size / d-dimension vector of each individual,\\
@@ -210,7 +215,6 @@ Our Forecaster module uses values of real-time monitoring data (after preprocess
 	\end{center}
 \end{table*}
 In this section, we present experiments as well as evaluations for our proposed system. The tests cover: 
-
 \begin{enumerate}
 	\item Comparing prediction accuracy between MLNN, traditional FLNN and FL-GANN;
 	\item Evaluating influence of GA hyper-parameters on FL-GANN performance;
@@ -220,7 +224,8 @@ In this section, we present experiments as well as evaluations for our proposed 
 \subsection{Experimental Setup}
 \label{experimental_setup}
 
-In our experiments, we use a real workload dataset provided by Google~\cite{ref_google_trace} in one month of 2011. In the dataset, each job is a collection of many tasks that are run simultaneously on multiple machines. Resource utilization of tasks are measured by several metrics such as CPU, and memory usage, disk I/O mean time, and so on with more than 1233 million data items. According to the analyses also presented in~\cite{ref_google_trace}, only less than 2$\%$ of jobs run for longer than one day, even though such jobs contribute to over 80$\%$ of the recorded resource utilization in the Google cluster. In order to evaluate the generalization of our prediction model, we select a long running job with ID 6176858948. The job consists of 60171 divergent tasks during the 20-day period (from 1st to 20th day). We set average time $t$ = 5 minutes, forecast horizon $k$ = 1 in all experiments. The data from 1st to 15th day is used to train experimented neural networks including Multiple Layers (MLNN), traditional FLNN, and FL-GANN. Meanwhile, the data from 16th to 20th day is employed to test the prediction performance of these networks. For the multivariate input case, both CPU and memory usage data is used simultaneously for the learning models. Meanwhile, in the case of univariate, only one metric (CPU or memory) is put into the prediction models.
+In our experiments, we use a real workload dataset provided by Google~\cite{ref_google_trace} in one month of 2011. In the dataset, each job is a collection of many tasks that are run simultaneously on multiple machines. Resource utilization of tasks are measured by several metrics such as CPU, and memory usage, disk I/O mean time, and so on. According to the analyses also presented in~\cite{ref_google_trace}, only less than 2$\%$ of jobs run for longer than one day, even though such jobs contribute to over 80$\%$ of the recorded resource utilization in the Google cluster. In order to evaluate the generalization of our prediction model, we select a long running job with ID 6176858948. The job consists of 60171 divergent tasks during the 20-day period (from 1st to 20th day). We set average time $t$ = 5 minutes, forecast horizon $k$ = 1 in all experiments. The data from 1st to 15th day is used to train neural networks. Meanwhile, the data from 16th to 20th day is employed to test the prediction performance of these networks. For the multivariate input case, both CPU and memory usage data is used simultaneously for the learning models. Meanwhile, in the case of univariate, only one metric (CPU or memory) is put into the prediction models. Because we do not want to repeat the comparison between the models in [14], so we mainly focus on networks including MLNN, traditional FLNN and our proposed model Functional-Link Genetic Algorithm Neural Network(FL-GANN).
+
 
 \begin{figure*}[h]
 	\centering
@@ -434,9 +439,6 @@ In this paper, we presented our designs for a novel cloud resource prediction sy
 \bibitem{ref_hipel}
 Hipel, Keith W., and A. Ian McLeod. Time series modelling of water resources and environmental systems. Vol. 45. Elsevier, 1994.
 
-\bibitem{ref_kumar}
-Kumar, Jitendra, Rimsha Goomer, and Ashutosh Kumar Singh. "Long Short Term Memory Recurrent Neural Network (LSTM-RNN) Based Workload Forecasting Model For Cloud Datacenters." Procedia Computer Science 125 (2018): 676-682.
-
 \bibitem{ref_pao}
 Pao, Yohhan. "Adaptive pattern recognition and neural networks." (1989).
 
@@ -464,9 +466,6 @@ Tran, D., Tran, N., Nguyen, G., and Nguyen, B. M. (2017). A proactive cloud scal
 \bibitem{ref_nhuan} 
 Tran, N., Nguyen, T., Nguyen, B. M., and Nguyen, G.. A Multivariate Fuzzy Time Series Resource Forecast Model for Clouds using LSTM and Data Correlation Analysis. In Procedia Computer Science, Elsevier, 22nd International Conference on Knowledge-Based and Intelligent Information $\&$ Engineering Systems (KES), Belgrade, 2018, in press.
 
-\bibitem{ref_samanta}
-Samanta, B., K. R. Al-Balushi, and S. A. Al-Araimi. "Artificial neural networks and support vector machines with genetic algorithm for bearing fault detection." Engineering applications of artificial intelligence 16.7-8 (2003): 657-665.
-
 \bibitem{ref_blanco}
 Blanco, Armando, Miguel Delgado, and Maria C. Pegalajar. "A real-coded genetic algorithm for training recurrent neural networks." Neural networks 14.1 (2001): 93-105.
 
@@ -475,6 +474,9 @@ Dehuri, Satchidananda, Bijan Bihari Mishra, and Sung-Bae Cho. "Genetic feature s
 
 \bibitem{ref_google_trace}
 Reiss, Charles, et al. "Heterogeneity and dynamicity of clouds at scale: Google trace analysis." Proceedings of the Third ACM Symposium on Cloud Computing. ACM, 2012.
+
+\bibitem{ref_prevost}
+Prevost, J. J., Nagothu, K., Kelley, B., $\&$ Jamshidi, M. (2011, June). Prediction of cloud data center networks loads using stochastic and neural models. In System of Systems Engineering (SoSE), 2011 6th International Conference on (pp. 276-281). IEEE.
 
 \end{thebibliography}
 
