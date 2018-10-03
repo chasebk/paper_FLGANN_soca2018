@@ -89,7 +89,7 @@ intervention and multivariate ARMA models for predicting cloud workloads.
 
 In~\cite{ref_hipel}, several prediction methods including autoregressive (AR), moving average (MA), autoregressive-moving average (ARMA), nonstationary, long memory, three families of seasonal, multiple input-output, intervention and multivariate ARMA models were evaluated and compared in predicting cloud workloads. 
 
-Recently, deep learning has emerged as an effective solution for prediction problem. In terms of applying to clouds, Prevost et al.~\cite{ref_prevost} used the Multi-layer neural network (MLNN) model for prediction URL resource requests of a WWW server at NASA and WWW server at EPA. Although deep learning brings significant effectiveness for the cloud proactive auto-scaling issue, these learning models often have very complex structure and require a long time for training process to get high performance. In this way, few other artificial networks have been proposed to overcome the disadvantages. Functional Link Neural Network is a representation for that simple neural network group.
+Recently, deep learning has emerged as an effective solution for prediction problem. In terms of applying to clouds, Prevost et al.~\cite{ref_prevost} used the Multi-layer neural network (MLNN) model for prediction URL resource requests of a WWW server at NASA and WWW server at EPA. Although deep learning brings significant effectiveness for the cloud proactive auto-scaling issue, these learning models often have very complex structure and require a long time for training process. In this way, few other artificial networks have been proposed to overcome the disadvantages. Functional Link Neural Network is a representation for that simple neural network group.
 
 FLNN has a single neuron is proposed by Pao~\cite{ref_pao} in pattern-recognition task. The author pointed out that FLNN has less computational cost and can be easily implemented in hardware applications. The reason is that hidden layer in this network is eliminated. In this way, nonlinear relationship between the inputs and outputs is processed via a set of functional expansions (i.e. polynomials). FLNN has been used in several applications such as stock market~\cite{ref_majhi}, and exchange rate prediction~\cite{ref_rout}. In their work, Khandelwal et al.~\cite{ref_khan} used 4 datasets from 4 different areas to test the forecasting ability of FLNN and in comparison with MLNN, the authors' obtained results indicate that FLNN model provides better outcomes for all 4 datasets. In~\cite{ref_sahoo}, Sahoo et al used efficient Chebyshev and Legendre polynomials in combination as Functional-Link, the FLNN's outcomes gives better accuracy and takes less computation time as compared to MLNN's outcomes.
 
@@ -189,7 +189,7 @@ MAE = \frac{\sum_{i=0}^N( forecast(i) - y_i)^2}{N}	\label{eq_MAE}
 Fitness = \frac{1}{MAE}	\label{eq_fitness}
 \end{equation}
 
-\subsection{Forecaster}
+\subsection{Forecaster Module}
 \label{forecater}
 Our Forecaster module uses values of real-time monitoring data (after preprocessing process) as inputs of the trained model to predict new values (i.e. resource consumption) in advance. Before can be used, the obtained outputs are unnormalized into the real values.
 
