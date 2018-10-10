@@ -63,11 +63,11 @@ Cloud computing, Functional-link neural network, Functional-link and Genetic alg
 
 \section{Introduction}
 \label{intro}
-Pay-as-you-go fashion is one of the prominent advantage features of cloud computing. With the usage model, users always expect their applications, which operate on cloud infrastructures are provided computational resources adequately but not redundantly in real-time without any delays. This helps reduce maximally the renting resource costs. However, it is quite difficult and complicated to meet the requirement because clouds must have a new scaling mechanism that can be tuned immediately and precisely offered resources on demand of these appliances to replace the current approach with resource usage thresholds. 
+Pay-as-you-go fashion is one of the prominent advantage features of cloud computing. With the usage model, users always expect their applications, which operate on cloud infrastructures are provided computational resources adequately but not redundantly in real-time without any delays~\cite{ref_abstraction}. This helps reduce maximally the renting resource costs. However, it is quite difficult and complicated to meet the requirement because clouds must have a new scaling mechanism that can be tuned immediately and precisely offered resources on demand of these appliances to replace the current approach with resource usage thresholds. 
 
-Indeed, although the setting threshold mechanism enables to define scaling rules easily, it cannot supply accurately resources as compared with the changeful requirements of applications. For example, assuming CPU percentage threshold of virtual machine (VM) is set at 80\% to scale out. When CPU utilization reaches the threshold, cloud will automatically add one more VM for the user’s system. However, the scaling function needs to spend a few moments to complete the deployment of second VM. During this time, the CPU percentage usage has already been changed from the set threshold to another that can be bigger or smaller than 80\%. This makes the inaccuracy issue for current cloud auto-scalers as presented above.
+Indeed, although the setting threshold mechanism enables to define scaling rules easily, it cannot supply accurately resources as compared with the changeful requirements of applications~\cite{ref_cluser}. For example, assuming CPU percentage threshold of virtual machine (VM) is set at 80\% to scale out. When CPU utilization reaches the threshold, cloud will automatically add one more VM for the user’s system. However, the scaling function needs to spend a few moments to complete the deployment of second VM. During this time, the CPU percentage usage has already been changed from the set threshold to another that can be bigger or smaller than 80\%. This makes the inaccuracy issue for current cloud auto-scalers as presented above.
 
-Besides, due to quality of service (QoS) tie with users (which is defined in service-layer agreements - SLA), cloud vendors often accept the resource over-provisioning (despite sometime the cloud users cannot acquire enough resources like) rather than offering resource accurately in real-time. This leads to the increase of infrastructure costs in general for both cloud users and providers. It can be seen that there is a long distance among the resource supply requirements of users and the vendors' capabilities with the cloud auto-scaling solution today. Hence, proposing a better auto-scaler to resolve the problem has significant for cloud computing adoption at this time.  
+Besides, due to quality of service (QoS) tie with users (which is defined in service-layer agreements - SLA), cloud vendors often accept the resource over-provisioning (despite sometime the cloud users cannot acquire enough resources like) rather than offering resource accurately in real-time~\cite{ref_hpc}. This leads to the increase of infrastructure costs in general for both cloud users and providers. It can be seen that there is a long distance among the resource supply requirements of users and the vendors' capabilities with the cloud auto-scaling solution today. Hence, proposing a better auto-scaler to resolve the problem has significant for cloud computing adoption at this time.  
 
 Recently, many prediction-based auto-scaling systems have been proposed for cloud computing. While increasing prediction accuracy for resource consumptions is a very attractive challenge, the problem of processing multiple metric types (e.g. CPU, and memory usages, disk capacity and I/O, network throughput/throughout and so forth) at the same time have received less attention from researchers when they develop prediction systems. Among the resource metrics could have some implicit relationships (e.g. between CPU and memory usage, and between disk I/O and memory I/O) and forecasting separately each resource type cannot discover the relationships. In this way, prediction outcomes will not fit practice requirements. To resolve the issue, cloud prediction-based auto-scalers has to the ability of processing different metrics simultaneously to make the scaling decision precisely. Until now, there are very few studies dealt with that multivariate problem for clouds. In this paper, we focus on proposing a new method for prediction stage using functional-link neural network (FLNN) and genetic algorithm (GA). Our forecast system also is designed to process multiple resource metrics simultaneously. We use real dataset produced from Google cluster to test and evaluate our designed model. The gained results show that our proposals bring positive effectiveness in predicting resource consumption.
 
@@ -82,12 +82,7 @@ The organization of this paper is as follows. In Section~\ref{related_work}, we 
 \section{Related Work}
 \label{related_work}
 
-The main goal of proactive resource provision techniques is to predict precisely the resource consumptions in advance. There are a huge research number that have dealt in forecast models for cloud computing. In [14], several models of predictive time series are
-proposed and demonstrated such as ARMA (autoregressive-moving average),
-nonstationary, long memory, three families of seasonal, multiple input-output,
-intervention and multivariate ARMA models for predicting cloud workloads.
-
-In~\cite{ref_hipel}, several prediction methods including autoregressive (AR), moving average (MA), autoregressive-moving average (ARMA), nonstationary, long memory, three families of seasonal, multiple input-output, intervention and multivariate ARMA models were evaluated and compared in predicting cloud workloads. 
+The main goal of proactive resource provision techniques is to predict precisely the resource consumptions in advance. There are a huge research number that have dealt in forecast models for cloud computing. In~\cite{ref_hipel}, several prediction methods including autoregressive (AR), moving average (MA), autoregressive-moving average (ARMA), nonstationary, long memory, three families of seasonal, multiple input-output, intervention and multivariate ARMA models were evaluated and compared in predicting cloud workloads. 
 
 Recently, deep learning has emerged as an effective solution for prediction problem. In terms of applying to clouds, Prevost et al.~\cite{ref_prevost} used the Multi-layer neural network (MLNN) model for prediction URL resource requests of a WWW server at NASA and WWW server at EPA. Although deep learning brings significant effectiveness for the cloud proactive auto-scaling issue, these learning models often have very complex structure and require a long time for training process. In this way, few other artificial networks have been proposed to overcome the disadvantages. Functional Link Neural Network is a representation for that simple neural network group.
 
@@ -100,7 +95,7 @@ Genetic algorithm is one of optimization mechanisms for large and complex spaces
 In the aspect of dealing with multivariate time series problem in cloud computing, in~\cite{ref_dang}, the authors proposed MF-GABPNN model to mine the relationship among different metric types in forecast process. Thus, the authors choose CPU and memory as multivariate time-series to test their proposed model. Going further, in~\cite{ref_nhuan}, Nhuan et al. proved that there is a relation among different metric types and through analyzing data correlation, the authors select appropriate time series data metrics to put into LSTM-RNN prediction model. However, so far, there are no any studies that use FLNN for multivariate time series data prediction for cloud computing. As compared with the existing works presented above, our differences and contributions include:
 
 \begin{enumerate}
-	\item Proposing an new approach for proactive auto-scaling problem in clouds using FLNN.
+	\item Proposing a new approach for proactive auto-scaling problem in clouds using FLNN.
 	\item Proposing a novel improvement for FLNN, in which the network is trained by GA instead of back-propagation mechanism called FL-GANN. 
 	\item Proposing a prediction resource forecasting system that can be processed multivariate data. This is an important feature of cloud computing while designing auto-scalers in practice.
 	\item Testing the proposed system performance with real dataset produced by Google cluster.
@@ -117,9 +112,9 @@ Through Collector module, raw resource monitoring data is collected from VMs and
 
 Preprocessor module plays the role of transforming the collected raw time-series data to supervised data to fit the input of neural network. There are several mechanisms that are deployed to process cloud workload data, covering: averaging data in long time period, normalized data, sliding window, group into multivariate time series and expansion functions. After preprocessing in this module, the output data is put into database in Collector as historical resources data, which is used to create prediction model in Trainer module. The data also is provided for Forecaster to predict consumption resources. 
 
-A novel learning method is proposed in our Trainer module using FLNN that is a variant of traditional neural network using expansion functions. Furthermore, the network also is trained by GA to speed up the convergence and increase the forecast accuracy. Due to combination of those mechanisms, the proposed learning method is called by FL-GANN. 
+A novel learning method is proposed in our Trainer module using FLNN that is a variant of traditional neural network with expansion functions. Furthermore, the network also is trained by GA to speed up the convergence and increase the forecast accuracy. Due to combination of those mechanisms, the proposed learning method is called by FL-GANN. 
 
-After the training process finishes, trained model is used to predict future resource consumption in Forecaster. 
+After the training process finishes, trained model is used to predict future resource consumption in Forecaster module. 
 
 \begin{figure*}[htbp]
 	\centerline{\includegraphics[width=0.7\textwidth =0.1cm 0.1cm 0.1cm 0.1cm, clip]{images/FLGANN_process.pdf}}
@@ -149,7 +144,7 @@ There are many expansion functions, however the most popular are Chebyshev, Lege
 
 \subsection{Trainer module}
 \label{learning_model}
-This module consists of two main components, covering a neural network with single unit and GA, which is used to train the network. The functional link of FLNN are deployed in Preprocessor as presented in Subsection~\ref{pre_precessor}. Figure~\ref{FLGANN_process} describes general training process of our proposed FL-GANN model. In Fig.~\ref{FLGANN_process}, there is a component Encoder, which real-value encodes the weights and bias of network into a chromosome (real-value vector), while the Decoder component decoded the chromosome into the weights and bias of network. Because the requirement of GA is a fitness function, we calculate Mean Absolute Error (MAE) based on error of training data according to formula (\ref{eq_MAE}). The fitness function is reckoned by equation (\ref{eq_fitness}). Operations of GA in FL-GANN model are introduced via Algorithm~\ref{algo_GA}.
+This module consists of two main components, covering a neural network with single unit and GA, which is used to train the network. The functional-link of FLNN are deployed in Preprocessor as presented in Subsection~\ref{pre_precessor}. Figure~\ref{FLGANN_process} describes general training process of our proposed FL-GANN model. In Fig.~\ref{FLGANN_process}, there is a Encoder component, which real-value encodes the weights and bias of network into a chromosome (real-value vector), while the Decoder component decoded the chromosome into the weights and bias of network. Because the requirement of GA is a fitness function, we calculate Mean Absolute Error (MAE) based on error of training data according to formula (\ref{eq_MAE}). The fitness function is reckoned by equation (\ref{eq_fitness}). Operations of GA in FL-GANN model are introduced via Algorithm~\ref{algo_GA}.
 
 \begin{algorithm}[h]
 	\caption{GANN Training Algorithm}\label{algo_GA}
@@ -193,7 +188,7 @@ Fitness = \frac{1}{MAE}	\label{eq_fitness}
 \label{forecater}
 Our Forecaster module uses values of real-time monitoring data (after preprocessing process) as inputs of the trained model to predict new values (i.e. resource consumption) in advance. Before can be used, the obtained outputs are unnormalized into the real values.
 
-\section{Experiments}
+\section{Experiment}
 \label{experiments}
 
 \begin{table*}[h]
@@ -214,6 +209,7 @@ Our Forecaster module uses values of real-time monitoring data (after preprocess
 		\label{table:forecasting_results_MLNN_FLNN_FLGANN}
 	\end{center}
 \end{table*}
+
 In this section, we present experiments as well as evaluations for our proposed system. The tests cover: 
 \begin{enumerate}
 	\item Comparing prediction accuracy between MLNN, traditional FLNN and FL-GANN;
@@ -225,7 +221,6 @@ In this section, we present experiments as well as evaluations for our proposed 
 \label{experimental_setup}
 
 In our experiments, we use a real workload dataset provided by Google~\cite{ref_google_trace} in one month of 2011. In the dataset, each job is a collection of many tasks that are run simultaneously on multiple machines. Resource utilization of tasks are measured by several metrics such as CPU, and memory usage, disk I/O mean time, and so on. According to the analyses also presented in~\cite{ref_google_trace}, only less than 2$\%$ of jobs run for longer than one day, even though such jobs contribute to over 80$\%$ of the recorded resource utilization in the Google cluster. In order to evaluate the generalization of our prediction model, we select a long running job with ID 6176858948. The job consists of 60171 divergent tasks during the 20-day period (from 1st to 20th day). We set average time $t$ = 5 minutes, forecast horizon $k$ = 1 in all experiments. The data from 1st to 15th day is used to train neural networks. Meanwhile, the data from 16th to 20th day is employed to test the prediction performance of these networks. For the multivariate input case, both CPU and memory usage data is used simultaneously for the learning models. Meanwhile, in the case of univariate, only one metric (CPU or memory) is put into the prediction models. Because we do not want to repeat the comparison between the models in [14], so we mainly focus on networks including MLNN, traditional FLNN and our proposed model Functional-Link Genetic Algorithm Neural Network(FL-GANN).
-
 
 \begin{figure*}[h]
 	\centering
@@ -406,10 +401,9 @@ In order to more objectively evaluate Power Series and Legendre functions with F
 \label{conclusion}
 In this paper, we presented our designs for a novel cloud resource prediction system using functional-link neural network. We also proposed the use of genetic algorithm instead of back-propagation technique with gradients descent to overcome drawbacks of the training process for traditional FLNN. Besides, in our system, the multiple resource metrics are processed simultaneously using several proposed data preprocessing mechanisms. This helps the prediction system can forecast more precisely resource consumptions in advance because the metrics often have relationship each other. We tested our FL-GANN model with a real dataset provided by Google. The achieved results show that although the forecast method is simple but it can bring good performance in prediction process even though the system exploits multivariate data. The outcomes also prove our proposals can be applied to practice. In the near future, we plan to evaluate several other variants of FLNN and to develop an auto-scaler service with decision phase for clouds using this prediction technique.
 
-\section*{Acknowledgment} This research is supported by
-the Vietnamese MOETs project No. B2017-BKA-32 Research on developing software framework to integrate IoT gateways for fog computing deployed on multi-cloud environment,
-VEGA 2/0167/16 Methods and algorithms for the semantic processing of Big Data in distributed computing environment, and
-APVV-17-0619 Urgent Computing for Exascale Data (U-COMP).
+\section*{Acknowledgments} This research is supported by
+the Vietnamese MOET's project No. B2017-BKA-32 ``Research on developing software framework to integrate IoT gateways for fog computing deployed on multi-cloud environment'',
+Slovak VEGA 2/0167/16 project ``Methods and algorithms for the semantic processing of Big Data in distributed computing environment'', and Slovak ``APVV-17-0619 Urgent Computing for Exascale Data (U-COMP)''.
 
 %\section*{Acknowledgment}
 %
@@ -439,6 +433,18 @@ APVV-17-0619 Urgent Computing for Exascale Data (U-COMP).
 
 \begin{thebibliography}{00}
 
+\bibitem{ref_abstraction}
+Nguyen Minh, B., Tran, V., and Hluchy, L. (2012). Abstraction layer for development and deployment of cloud services. Computer Science, 13, 79-88.
+
+\bibitem{ref_hpc}
+Hluchý, L., Nguyen, G., Astaloš, J., Tran, V., Šipková, V., and Nguyen, B. M. (2017). Effective computation resilience in high performance and distributed environments. Computing and Informatics, 35(6), 1386-1415.
+
+\bibitem{ref_cluser}
+Nguyen, B. M., Tran, D., and Nguyen, G. (2016). Enhancing service capability with multiple finite capacity server queues in cloud data centers. Cluster Computing, 19(4), 1747-1767.
+
+\bibitem{ref_dehuri_2}
+Dehuri, Satchidananda, Bijan Bihari Mishra, and Sung-Bae Cho. "Genetic feature selection for optimal functional link artificial neural network in classification." International Conference on Intelligent Data Engineering and Automated Learning. Springer, Berlin, Heidelberg, 2008.
+
 \bibitem{ref_hipel}
 Hipel, Keith W., and A. Ian McLeod. Time series modelling of water resources and environmental systems. Vol. 45. Elsevier, 1994.
 
@@ -467,13 +473,10 @@ Montana, David J., and Lawrence Davis. "Training Feedforward Neural Networks Usi
 Tran, D., Tran, N., Nguyen, G., and Nguyen, B. M. (2017). A proactive cloud scaling model based on fuzzy time series and SLA awareness. Procedia Computer Science, 108, 365-374.
 
 \bibitem{ref_nhuan} 
-Tran, N., Nguyen, T., Nguyen, B. M., and Nguyen, G.. A Multivariate Fuzzy Time Series Resource Forecast Model for Clouds using LSTM and Data Correlation Analysis. In Procedia Computer Science, Elsevier, 22nd International Conference on Knowledge-Based and Intelligent Information $\&$ Engineering Systems (KES), Belgrade, 2018, in press.
+Tran, N., Nguyen, T., Nguyen, B. M., and Nguyen, G. (2018). A Multivariate Fuzzy Time Series Resource Forecast Model for Clouds using LSTM and Data Correlation Analysis. Procedia Computer Science, 126, 636-645.
 
 \bibitem{ref_blanco}
 Blanco, Armando, Miguel Delgado, and Maria C. Pegalajar. "A real-coded genetic algorithm for training recurrent neural networks." Neural networks 14.1 (2001): 93-105.
-
-\bibitem{ref_dehuri_2}
-Dehuri, Satchidananda, Bijan Bihari Mishra, and Sung-Bae Cho. "Genetic feature selection for optimal functional link artificial neural network in classification." International Conference on Intelligent Data Engineering and Automated Learning. Springer, Berlin, Heidelberg, 2008.
 
 \bibitem{ref_google_trace}
 Reiss, Charles, et al. "Heterogeneity and dynamicity of clouds at scale: Google trace analysis." Proceedings of the Third ACM Symposium on Cloud Computing. ACM, 2012.
