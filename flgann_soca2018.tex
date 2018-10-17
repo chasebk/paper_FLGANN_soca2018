@@ -8,7 +8,7 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
     
 \newtheorem{definition}{Definition}
 \usepackage{array}
@@ -67,11 +67,11 @@ Pay-as-you-go fashion is one of the prominent advantage features of cloud comput
 
 Indeed, although the setting threshold mechanism enables to define scaling rules easily, it cannot supply accurately resources as compared with the changeful requirements of applications~\cite{ref_cluser}. For example, assuming CPU percentage threshold of virtual machine (VM) is set at 80\% to scale out. When CPU utilization reaches the threshold, cloud will automatically add one more VM for the user’s system. However, the scaling function needs to spend a few moments to complete the deployment of second VM. During this time, the CPU percentage usage has already been changed from the set threshold to another that can be bigger or smaller than 80\%. This makes the inaccuracy issue for current cloud auto-scalers as presented above.
 
-Besides, due to quality of service (QoS) tie with users (which is defined in service-layer agreements - SLA), cloud vendors often accept the resource over-provisioning (despite sometime the cloud users cannot acquire enough resources like) rather than offering resource accurately in real-time~\cite{ref_hpc}. This leads to the increase of infrastructure costs in general for both cloud users and providers. It can be seen that there is a long distance among the resource supply requirements of users and the vendors' capabilities with the cloud auto-scaling solution today. Hence, proposing a better auto-scaler to resolve the problem has significant for cloud computing adoption at this time.  
+Besides, due to quality of service (QoS) tie with users (which is defined in service-layer agreements - SLA), cloud vendors often accept the resource over-provisioning (despite sometime the cloud users cannot acquire enough resources like) rather than offering resource accurately in real-time~\cite{ref_hpc}. This leads to the increase of infrastructure costs in general for both cloud users and providers. It can be seen that there is a long distance among the resource supply requirements of users and the vendors' capabilities with the cloud auto-scaling solution today. Hence, proposing a better auto-scaler to resolve the problem has significant for cloud computing adoption at this time.
 
 Recently, many prediction-based auto-scaling systems have been proposed for cloud computing. While increasing prediction accuracy for resource consumptions is a very attractive challenge, the problem of processing multiple metric types (e.g. CPU, and memory usages, disk capacity and I/O, network throughput/throughout and so forth) at the same time have received less attention from researchers when they develop prediction systems. Among the resource metrics could have some implicit relationships (e.g. between CPU and memory usage, and between disk I/O and memory I/O) and forecasting separately each resource type cannot discover the relationships. In this way, prediction outcomes will not fit practice requirements. To resolve the issue, cloud prediction-based auto-scalers has to the ability of processing different metrics simultaneously to make the scaling decision precisely. Until now, there are very few studies dealt with that multivariate problem for clouds. In this paper, we focus on proposing a new method for prediction stage using functional-link neural network (FLNN) and genetic algorithm (GA). Our forecast system also is designed to process multiple resource metrics simultaneously. We use real dataset produced from Google cluster to test and evaluate our designed model. The gained results show that our proposals bring positive effectiveness in predicting resource consumption.
 
-The organization of this paper is as follows. In Section~\ref{related_work}, we categorize and analyze existing works to highlight our contributions. Section~\ref{fl_gann} presents our design cloud resource consumption prediction system with FN-GANN - an improvement of traditional FLNN using genetic algorithm to train model. We also introduce several proposed data preprocessing mechanisms in this section. In the next Section, we describe our tests, evaluations for the proposed system to prove the proposal effectiveness. Section~\ref{conclusion} concludes this paper and defines some our future works.
+The organization of this paper is as follows. In Section~\ref{related_work}, we categorize and analyze existing works to highlight our contributions. Section~\ref{fl_gann} presents our design cloud resource consumption prediction system with FN-GANN - an improvement of traditional FLNN using GA to train model. We also introduce several proposed data preprocessing mechanisms in this section. In the next Section, we describe our tests, evaluations for the proposed system to prove the proposal effectiveness. Section~\ref{conclusion} concludes this paper and defines some our future works.
 
 \begin{figure*}[h]
 	\centerline{\includegraphics[width=0.7\textwidth =0.1cm 0.1cm 0.1cm 0.1cm, clip]{images/FLGANN_system.pdf}}
@@ -132,17 +132,17 @@ The next phase is normalization, which scales a time series in the range of [0, 
 \begin{definition}
 \label{definition_1}
 Let $X_1(t), X_2(t),. . . , X_i(t),. . . , X_M(t) $ are $M$ time series ($M$ metrics resource types), the single multivariate time series is: \\
-$ X(t) = \left[ X_1(t), X_2(t), . . . , X_M (t) \right],  t = 1, 2, . . . , n$.
+$ X(t) = \left[ X_1(t), X_2(t), . . . , X_M (t) \right], t = 1, 2, . . . , n$.
 \end{definition}
 
 \begin{definition}
 \label{definition_2}
-A functional link is a function $f$ $\in$ $R^D \rightarrow R$ that transforms $X$ to a scalar ($X$: vector input patterns). If the input layer of the FLNN consists of functional link $f_i$, $i = 1,2,..., n$ then input patterns $X$ will be transformed to $Y$ $\in R^n$: $Y = (f_1(X),... f_n(X))$. 
+A functional-link is a function $f$ $\in$ $R^D \rightarrow R$ that transforms $X$ to a scalar ($X$: vector input patterns). If the input layer of the FLNN consists of functional-link $f_i$, $i = 1,2,..., n$ then input patterns $X$ will be transformed to $Y$ $\in R^n$: $Y = (f_1(X),... f_n(X))$. 
 \end{definition}
 
 There are many expansion functions, however the most popular are Chebyshev, Legendre, Laguerre, Power Series, Trigonometric. 
 
-\subsection{Trainer module}
+\subsection{Trainer Module}
 \label{learning_model}
 This module consists of two main components, covering a neural network with single unit of neuron and GA which is used to train the network. The functional-link of FLNN are deployed in Preprocessor presented in Subsection~\ref{pre_precessor}. Figure~\ref{FLGANN_process} describes general training process of our proposed FL-GANN model, in which the encoder component is used to encode the weights and bias of network into a chromosome (real-value vector). Otherwise, the decoder component decodes the chromosome into the weights and bias of network. Because the requirement of GA is a fitness function, we calculate Mean Absolute Error (MAE) based on error of training data according to formula (\ref{eq_MAE}). The fitness function is reckoned by equation (\ref{eq_fitness}). Operations of GA in FL-GANN model are introduced via Algorithm~\ref{algo_GA}.
 
@@ -163,10 +163,10 @@ This module consists of two main components, covering a neural network with sing
 		\STATE Calculating fitness of population based on formula (2)
 		\STATE Finding the best chromosome $C_{best}$ according to the achieved fitness value.
 		\REPEAT 
-		\STATE Using Routtele Wheel Selection to choose two individuals (parents $p_1, p_2$) based on the fitness value to cross-over with probability $p_c$ to make 2 offspring ($CH_1, CH_2$)  based on:
+		\STATE Using Routtele Wheel Selection to choose two individuals (parents $p_1, p_2$) based on the fitness value to cross-over with probability $p_c$ to make 2 offspring ($CH_1, CH_2$) based on:
 		\STATE 	$CH_{1i} \leftarrow \lambda p_{1i} + (1- \lambda)p_{2i}$
 		\STATE	$CH_{2i} \leftarrow \lambda p_{2i} + (1- \lambda)p_{1i}$, 		$ \lambda \sim U(0,1), i = \overline{1, d} $
-		\STATE Then offspring undergo  the mutation process by replacing each $CH_{ij}, i = \overline{1, 2}, j = \overline{1, d},$ with probability $p_m$ by a random uniform value $\sim U(0,1)$.
+		\STATE Then offspring undergo the mutation process by replacing each $CH_{ij}, i = \overline{1, 2}, j = \overline{1, d},$ with probability $p_m$ by a random uniform value $\sim U(0,1)$.
 		\STATE Appending offspring into a new generation.
 		\UNTIL{new generation has $p_s$ individuals}
 		\STATE Replacing the old generation by the new generation. 
@@ -213,7 +213,7 @@ Our Forecaster module uses values of real-time monitoring data (after preprocess
 In this section, we present experiments as well as evaluations for our proposed system. The tests cover: 
 \begin{enumerate}
 	\item Comparing prediction accuracy between MLNN, traditional FLNN and FL-GANN;
-	\item Evaluating influence of GA hyper-parameters on FL-GANN performance;
+	\item Evaluating influence of GA Hyper-parameters on FL-GANN performance;
 	\item Evaluating influence of FLNN expansion functions on FL-GANN effectiveness. 
 \end{enumerate}
 
@@ -268,7 +268,7 @@ Figure~\ref{tn1_multi_CPU} and~\ref{tn1_multi_RAM} show the predicted results be
 In this experiment, we focus on evaluating the influence of different GA hyper-parameters on our FL-GANN with multivariate input data. The parameters are pre-set for this test as follows.
 
 \begin{enumerate}
-	\item For population size $p_s$ changing experiment: $p_s$ value is put out in turn from $\left\{50, 100, 200, 300, 400, 500, 600\right\}$, sliding window = 3, expansion functions is Power Series, $g_{max} = 650$,  $p_c = 0.95$, and $p_m = 0.025$.	
+	\item For population size $p_s$ changing experiment: $p_s$ value is put out in turn from $\left\{50, 100, 200, 300, 400, 500, 600\right\}$, sliding window = 3, expansion functions is Power Series, $g_{max} = 650$, $p_c = 0.95$, and $p_m = 0.025$.	
 	\item For probability of two individual exchanging crossover $p_c$ changing experiment: $p_c$ value is put out in turn from $\left\{ 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 0.98 \right\}$, sliding window = 3, expansion functions is Power Series, $g_{max} = 650$, $p_s = 500$, and $p_m = 0.025$.
 	\item For probability of individual mutation $p_m$ changing experiment: $p_m$ value is put out in turn from $\left\{ 0.005, 0.01, 0.025, 0.05, 0.065, 0.80, 0.10 \right\}$, sliding window = 3, expansion functions is Power Series, $g_{max} = 650$, $p_s = 400$, and $p_c = 0.95$.
 \end{enumerate}
@@ -282,7 +282,7 @@ Figure~\ref{tn2_CPU_ps_FLGANN} indicates the MAE range of population sizes with 
 \begin{center}
 \begin{tabular}{| c | c| c |}
 \hline
-\textbf{Population size} & \multicolumn{2}{c|}{\textbf{Error Accuracy}}  \\ \cline{2-3} 
+\textbf{Population size} & \multicolumn{2}{c|}{\textbf{Error Accuracy}} \\ \cline{2-3} 
 & MAE & RMSE \\ [0.5ex] \hline
 $p_s$ = 50	& 0.2988	& 0.4913 \\ \hline
 $p_s$ = 100	& 0.2940	& 0.4846 \\ \hline
@@ -337,7 +337,7 @@ $p_s$ = 500	& 0.2908	& 0.4823 \\ \hline
 \begin{center}
 \begin{tabular}{| c | c| c |}
 \hline
-\textbf{Crossover Probability} & \multicolumn{2}{c|}{\textbf{Error Accuracy}}  \\ \cline{2-3} 
+\textbf{Crossover Probability} & \multicolumn{2}{c|}{\textbf{Error Accuracy}} \\ \cline{2-3} 
 & MAE & RMSE \\ [0.5ex] \hline
 $p_c$ = 0.70	& 0.2968	& 0.4818		\\ \hline
 $p_c$ = 0.75	& 0.2943	& 0.4854	\\ \hline
@@ -436,14 +436,14 @@ Slovak VEGA 2/0167/16 project ``Methods and algorithms for the semantic processi
 \bibitem{ref_abstraction}
 Nguyen Minh, B., Tran, V., and Hluchy, L. (2012). Abstraction layer for development and deployment of cloud services. Computer Science, 13, 79-88.
 
-\bibitem{ref_hpc}
-Hluchý, L., Nguyen, G., Astaloš, J., Tran, V., Šipková, V., and Nguyen, B. M. (2017). Effective computation resilience in high performance and distributed environments. Computing and Informatics, 35(6), 1386-1415.
-
 \bibitem{ref_cluser}
 Nguyen, B. M., Tran, D., and Nguyen, G. (2016). Enhancing service capability with multiple finite capacity server queues in cloud data centers. Cluster Computing, 19(4), 1747-1767.
 
+\bibitem{ref_hpc}
+Hluchý, L., Nguyen, G., Astaloš, J., Tran, V., Šipková, V., and Nguyen, B. M. (2017). Effective computation resilience in high performance and distributed environments. Computing and Informatics, 35(6), 1386-1415.
+
 \bibitem{ref_dehuri_2}
-Dehuri, Satchidananda, Bijan Bihari Mishra, and Sung-Bae Cho. "Genetic feature selection for optimal functional link artificial neural network in classification." International Conference on Intelligent Data Engineering and Automated Learning. Springer, Berlin, Heidelberg, 2008.
+Dehuri, Satchidananda, Bijan Bihari Mishra, and Sung-Bae Cho. "Genetic feature selection for optimal functional-link artificial neural network in classification." International Conference on Intelligent Data Engineering and Automated Learning. Springer, Berlin, Heidelberg, 2008.
 
 \bibitem{ref_hipel}
 Hipel, Keith W., and A. Ian McLeod. Time series modelling of water resources and environmental systems. Vol. 45. Elsevier, 1994.
