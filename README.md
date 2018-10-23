@@ -12,6 +12,8 @@ Template:   https://www.ieee.org/conferences/publishing/templates.html
 5. File .gitignore là file dùng để loại bỏ những files/folders không muốn thêm vào git local/server 
 6. Folder images chứa ảnh của bài báo submit 
 7. File flgann_soca2018.tex là mã nguồn bài báo sẽ submit 
+8. File: slide_conference.tex là mã nguồn slide cho hội nghị 
+9. Các file còn lại là rác, lưu trong .gitignore 
 
 
 
