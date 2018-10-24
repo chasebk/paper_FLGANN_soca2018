@@ -76,31 +76,38 @@
 
 \usepackage{filecontents}
 
+\usepackage{color}						% http://latexcolor.com/
+\def \GN#1{\textcolor{red}{~#1}}				% Giang Nguyen
+
+
 \title{\large A Resource Usage Prediction System Using Functional-link and Genetic Algorithm Neural Network for Multivariate Cloud Metrics}
 
 % A subtitle is optional and this may be deleted
 
 
 
-\author{\small Thieu Nguyen\inst{1} \and Nhuan Tran\inst{1}\and Binh Minh Nguyen\inst{1} \and \underline{Giang Nguyen}\inst{2}}
+% \author{\small Thieu Nguyen\inst{1} \and Nhuan Tran\inst{1}\and Binh Minh Nguyen\inst{1} \and \underline{Giang Nguyen}\inst{2}}
+\author{\small Thieu Nguyen \and Nhuan Tran \and Binh Minh Nguyen \\ \and \underline{Giang Nguyen}}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
-\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
-{
-  \inst{1}%
-  School of Information and Communication Technology\\
-  Hanoi University of Science and Technology, Hanoi, Vietnam
-  \and
-  \inst{2}%
-  Institute of Informatics\\
-  Slovak Academy of Sciences, Bratislava, Slovakia}
+%\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+%{
+%  \inst{1}%
+%  School of Information and Communication Technology\\
+%  Hanoi University of Science and Technology, Hanoi, Vietnam
+%  \and
+%  \inst{2}%
+%  Institute of Informatics\\
+%  Slovak Academy of Sciences, Bratislava, Slovakia}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date{The 11th IEEE International Conference on\\
-	Service Oriented Computing and Application (SOCA 2018)}
+\institute{ Institute of Informatics\\ Slovak Academy of Sciences, Bratislava, Slovakia}
+
+\date{SOCA 2018\\
+	The 11th IEEE International Conference on\\ Service Oriented Computing and Application}
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
@@ -197,7 +204,7 @@
 			 \small FLNN has a single neuron is proposed by Pao in pattern-recognition task. \footcite{Yoh-Han Pao 1989} The advantages: 
 			\begin{itemize}
 				\item {
-					\small Less computational cost
+					\small Less computational cost \GN{in comparison with ??? some experiment results ???}
 				}
 				\item {
 					\small Easily implemented in hardware applications
@@ -205,7 +212,7 @@
 			\end{itemize}
 		}
 		\item{
-			\small  Successful Applying in serveral applications such as stock market \footcite{Majhi et al. 2009} and exchange rate prediction \footcite{Majhi et al. 2012}
+			\small  Successful in several applications such as stock market \footcite{Majhi et al. 2009} and exchange rate prediction \footcite{Majhi et al. 2012}
 		}
 		\item{
 			\small  In comparison with deep learning models such as MLNN in accuracy and computation time aspects
@@ -222,6 +229,20 @@
 	
 	$\,\to\,$ Main drawbacks of FLNN above is still using back-propagation technique with gradients descent to train \footcite{Dehuri, Satchidananda, and Sung-Bae Cho 2010}
 \end{frame}
+
+\begin{frame}{Functional-link neural network (Expansion functions)}
+	\begin{itemize}
+		\item \GN{Chebyshev in math}
+		\item Legendre
+		\item Laguerre
+		\item Power
+		\item Trigonometric
+	\end{itemize}
+	\begin{itemize}
+		\item \GN{what is the difference among them ?}
+	\end{itemize}
+\end{frame}
+
 
 \begin{frame}{Genetic algorithm}
 	\begin{itemize}
