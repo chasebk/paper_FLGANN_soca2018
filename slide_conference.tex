@@ -181,7 +181,7 @@
 \begin{frame}{Forecast models for cloud computing}
 	\begin{itemize}
 			\item{
-				Time series forecasting of cloud data center~ \footcite{Hipel et al. 1994}
+				Time series forecasting of cloud data center~\footcite{Hipel et al. 1994}
 				}
 				\begin{itemize}
 					\item {
@@ -201,10 +201,10 @@
 \begin{frame}{Functional-link neural network}
 	\begin{itemize}
 		\item{
-			 \small FLNN has a single neuron is proposed by Pao in pattern-recognition task. \footcite{Yoh-Han Pao 1989} The advantages: 
+			 \small FLNN has a flat architecture with a single neuron and predefined basis functions is proposed by Pao et al.\footcite{Yoh-Han Pao 1989}. By removing the hidden layers without giving up non-linerity by providing the input layer with expanded inputs. The authors reported their advantages: 
 			\begin{itemize}
 				\item {
-					\small Less computational cost \GN{in comparison with ??? some experiment results ???}
+					\small Less computational cost in comparison with Multilayer perceptrons in pattern-recognition task.
 				}
 				\item {
 					\small Easily implemented in hardware applications
@@ -231,17 +231,35 @@
 \end{frame}
 
 \begin{frame}{Functional-link neural network (Expansion functions)}
-	\begin{itemize}
-		\item \GN{Chebyshev in math}
-		\item Legendre
-		\item Laguerre
-		\item Power
-		\item Trigonometric
-	\end{itemize}
-	\begin{itemize}
-		\item \GN{what is the difference among them ?}
-	\end{itemize}
+
+\begin{table}[h]
+	\begin{center}
+		\begin{tabu}{| c | c| c | c | c | c | c | c |}
+			\hline
+Name & Polynomial functions \\
+\hline
+\multirow{2}*{}{Chebyshev$^1$} & $T_0(x) = 1$, $T_1(x) = x$ \\ 
+& $T_{n+1} = 2xT_n(x) - T_{n-1}(x) $\\ \hline
+
+\multirow{2}{*}{Legendre$^1$} & $ P_0(x) = 1, P_1(x) = x $ \\
+& $ (n+1)P_{n+1}(x) = (2n+1)x P_n(x) - nP_{n-1}(x) $ \\ \hline
+
+\multirow{3}{*}{Laguerre$^1$} & $L_0(x) = 1$, $L_1(x) = 1 - x$ \\
+& $L_{k+1}(x) = \displaystyle \frac{(2k+1-x)L_k(x) - kL_{k-1}(x)}{k+1}$ \\ \hline
+
+\multirow{1}{*}{Power Series$^1$} & $\displaystyle \sum_{n=0}^{\infty} a_n(x-c)^n = a_0 + a_1(x-c)^1 + a_2(x-c)^2 + ... $ \\  \hline
+
+\multirow{1}{*}{Trigonometric$^1$} & $\displaystyle T(x) = a_0 + \sum_{n=1}^{N}a_ncos(nx) + i \sum_{n=1}^{N} b_nsin(nx) $ \\ \hline
+		\end{tabu}
+		\label{table:forecasting_results_MLNN_FLNN_FLGANN}
+	\end{center}
+\end{table}
+
+[1]: Wikipedia
+
 \end{frame}
+
+
 
 
 \begin{frame}{Genetic algorithm}
