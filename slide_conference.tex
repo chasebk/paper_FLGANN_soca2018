@@ -162,8 +162,7 @@
 \section{Motivation}
 \begin{frame}{Motivation}
 	\begin{itemize}
-		\item {Cloud providers offer users a certain auto-scaling mechanism, which mainly operates based on predefined threshold resource usage $\,\to\,$ Resource provision is often delayed
-		}
+		\item {Cloud providers offer users a certain auto-scaling mechanism, which mainly operates based on predefined threshold resource usage $\,\to\,$ Resource provision is often delayed}
 		\item {Applying predictive future usages to the clouds is still has barriers: inaccuracy forecasting by only advanced in single metric over time and fluctuation of dataset}
 		\item {The contributions of this paper are listed below}
 		\begin{itemize}
@@ -194,7 +193,7 @@
 			}
 	\end{itemize}
 	\vspace{0.3cm}
-		$\,\to\,$ Above learning models often have very complex structure and require a long time for training process.\\
+		$\,\to\,$ Above learning models often have very complex structure and require a long time for training process.\newline
 		$\,\to\,$ Still considered the problem with univariate time series.
 
 \end{frame}
@@ -359,16 +358,16 @@ Name & Polynomial functions \\
 	\begin{itemize}
 		\item {
 			Data set: Google cluster trace dataset
-		}
-		\begin{itemize}
+			\begin{itemize}
 			\item 20 metrics which are measured by several metrics such as CPU, memory usage, disk I/O mean time, and so forth
 			\item 12O32799308 data items in data set
 			\item  Less than 2\% of jobs that run longer than one day, even though such jobs contribute to over 80\% of the dataset records
 			\item A long-running job with ID 6176858948 that consists of 25954362 monitoring data items during the 29-day period
 			\item Used dataset from 1st to 20th day to train model and from 21st to 29th to evaluate the model performance.
-		\end{itemize}
+			\end{itemize}
+		}
 		\item{
-			The fitness function in GA: \\
+			The fitness function in GA: \newline
 			$Fitness = \displaystyle \frac{1}{MAE} = \frac{N}{ \displaystyle \sum_{i=0}^N( forecast(i) - y_i)^2 }	\label{eq_fitness} $. 
 			}
 	\end{itemize}
@@ -511,8 +510,8 @@ Name & Polynomial functions \\
 		We proposed a new prediction system for cloud proactive auto-scaling service focusing on exploiting multivariate monitoring data
 		}
 		\item{
-			We proposed several mechanisms to improve accuracy as well as effectiveness of the resource usage prediction model}
-		\begin{itemize}
+			We proposed several mechanisms to improve accuracy as well as effectiveness of the resource usage prediction model
+			\begin{itemize}
 			\item {
 				A novel cloud resource prediction system using Functional-link Neural Network.
 			}
@@ -523,6 +522,7 @@ Name & Polynomial functions \\
 				Analyze the influence of GA parameters as well as Functional-Link to FL-GANN.
 			}
 		\end{itemize}
+		}
 	\end{itemize}
 \end{frame}
 
