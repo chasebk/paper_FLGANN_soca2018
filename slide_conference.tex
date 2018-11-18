@@ -164,7 +164,7 @@
 	\begin{itemize}
 		\item {Cloud providers offer users a certain auto-scaling mechanism, which mainly operates based on predefined threshold resource usage $\,\to\,$ Resource provision is often delayed}
 		\item {Applying predictive future usages to the clouds is still has barriers: inaccuracy forecasting by only advanced in single metric over time and fluctuation of dataset}
-		\item {The contributions of this paper are listed below}
+		\item {The contributions of the work}
 		\begin{itemize}
 			\item Applying FLNN to build a new approach for proactive auto-scaling problem in clouds
 			\item Improving FLNN, in which the network is trained by GA called FL-GANN
@@ -180,11 +180,11 @@
 \begin{frame}{Forecast models for cloud computing}
 	\begin{itemize}
 			\item{
-				Time series forecasting of cloud data center~\footcite{Hipel et al. 1994}
+				Time series forecasting ~\footcite{Hipel et al. 1994}
 				}
 				\begin{itemize}
 					\item {
-						Autoregressive (AR), moving average (MA), exponential smoothing, error-trend-seasonal (ETS), automated autoregressive integrated moving average (ARIMA) and back-propagation neural networks (BPNN)  
+						Autoregressive (AR), moving average (MA), exponential smoothing, error-trend-seasonal (ETS), automated autoregressive integrated moving average (ARIMA) and back-propagation NN  
 					}
 				\end{itemize}	
 
@@ -193,17 +193,18 @@
 			}
 	\end{itemize}
 	\vspace{0.3cm}
-		$\,\to\,$ Above learning models often have very complex structure and require a long time for training process.\newline
-		$\,\to\,$ Still considered the problem with univariate time series.
+		$\,\to\,$ Experimental solution with simpler structure\\
+		$\,\to\,$ Multivariate model: system overview, hidden relationships
+%		$\,\to\,$ Still considered the problem with univariate time series.
 
 \end{frame}
 \begin{frame}{Functional-link neural network}
 	\begin{itemize}
 		\item{
-			 \small FLNN has a flat architecture with a single neuron and predefined basis functions is proposed by Pao et al.\footcite{Yoh-Han Pao 1989}. By removing the hidden layers without giving up non-linerity by providing the input layer with expanded inputs. The authors reported their advantages: 
+			 \small FLNN has a flat architecture with a single neuron and predefined basis functions (Pao et al.\footcite{Yoh-Han Pao 1989}). By removing the hidden layers without giving up non-linerity by providing the input layer with expanded inputs. The authors reported their advantages: 
 			\begin{itemize}
 				\item {
-					\small Less computational cost in comparison with Multilayer perceptrons in pattern-recognition task.
+					\small Less computational cost in comparison with MLP in pattern-recognition task.
 				}
 				\item {
 					\small Easily implemented in hardware applications
@@ -211,22 +212,22 @@
 			\end{itemize}
 		}
 		\item{
-			\small  Successful in several applications such as stock market \footcite{Majhi et al. 2009} and exchange rate prediction \footcite{Majhi et al. 2012}
+			\small  Successful in e.g., stock market \footcite{Majhi et al. 2009} and exchange rate prediction \footcite{Majhi et al. 2012}
 		}
 		\item{
-			\small  In comparison with deep learning models such as MLNN in accuracy and computation time aspects
-			\begin{itemize}
-				\item {
-					\small The authors used 4 datasets from 4 different areas to compared\footcite{Khandelwal et al. 2015}
-				}
-				\item {
-					\small The authors used Chebyshev and Legendre polynomials in FLNN\footcite{Sahoo et al. 2018}
-				}
-			\end{itemize}
+			\small  Comparable accuracy with MLNN (DL) and computation time aspects \footcite{Khandelwal et al. 2015, Sahoo et al. 2018}
+%			\begin{itemize}
+%				\item {
+%					\small The authors used 4 datasets from 4 different areas to compared
+%				}
+%				\item {
+%					\small The authors used Chebyshev and Legendre polynomials in FLNN\footcite{}
+%				}
+%			\end{itemize}
 		}		
 	\end{itemize}
 	
-	$\,\to\,$ Main drawbacks of FLNN above is still using back-propagation technique with gradients descent to train \footcite{Dehuri, Satchidananda, and Sung-Bae Cho 2010}
+	$\,\to\,$ FLNN approach: still using back-propagation (BP) with gradients descent \footcite{Dehuri, Satchidananda, and Sung-Bae Cho 2010}
 \end{frame}
 
 \begin{frame}{Functional-link neural network (Expansion functions)}
@@ -261,43 +262,44 @@ Name & Polynomial functions \\
 
 
 
-\begin{frame}{Genetic algorithm}
+\begin{frame}{Genetic algorithm (GA)}
 	\begin{itemize}
 		\item{
-			\small Genetic algorithm is one of optimization mechanisms for large and complex spaces in order to find values, which are close to the global optimum. Hence, GA suits the problem of training feed-forward networks \footcite{Montana et al. 1989}
+			\small One of optimization mechanisms for large and complex spaces in order to find values, which are close to the global optimum. Hence, GA suits the problem of training FFNN \footcite{Montana et al. 1989}
 		}
 		\item{
-			\small The authors used GA-based approach to selected the features and optimized the appropriate classifier parameters of neural network and vector machines for bearing fault detection from time-domain vibration signals\footcite{Blanco et al. 2001}
+			\small The authors used GA-based approach to selected the features and optimized the appropriate classifier parameters of NN and vector machines for bearing fault detection from time-domain vibration signals\footcite{Blanco et al. 2001}
 		}
 		\item{
 			\small Dehuri et al. employed GA to choose an optimal subset of input features in FLNN and radial basis function neural network (RBFNN).\footcite{Dehuri et al. 2008}
 		}
 	\end{itemize}
-	$\,\to\,$ There are no works, which use GA to train FLNN instead of BP algorithm.
+	$\,\to\,$ Experiment: use GA to train FLNN instead of BP
 \end{frame}
 
-\begin{frame}{Multivariate time-series problem}
-	\begin{itemize}
-		\item{
-			\small The authors proposed MF-GABPNN model to mine the relationship among different metric types in forecast process. \footcite{Tran et al. 2017}
-		}
-		\item{
-			\small The analytics of relation among different metric types has been exposed and implemented in their prediction models.\footcite{Tran et al. 2018}
-		}
-	\end{itemize}
-	$\,\to\,$ There are no works, which use FLNN for multivariate time-series data prediction problem.
-\end{frame}
+%\begin{frame}{Multivariate time-series problem}
+%	\begin{itemize}
+%		\item{
+%			\small The authors proposed MF-GABPNN model to mine the relationship among different metric types in forecast process. \footcite{Tran et al. 2017}
+%		}
+%		\item{
+%			\small The analytics of relation among different metric types has been exposed and implemented in their prediction models.\footcite{Tran et al. 2018}
+%		}
+%	\end{itemize}
+%	$\,\to\,$ There are no works, which use FLNN for multivariate time-series data prediction problem.
+%\end{frame}
 
 
-\section{Designing system architecture}
-\begin{frame}{Designing system architecture}
-	\begin{figure}
-		\centering
-		\includegraphics[scale=0.42]{FLGANN_system.pdf}
-		\caption*{Architecture of Multivariate Resources Forecasting System}
-		\label{fig:overall}
-	\end{figure}
-\end{frame}
+%\section{Designing system architecture}
+%\begin{frame}{System architecture}
+%	\begin{figure}
+%		\centering
+%		\includegraphics[scale=0.42]{FLGANN_system.pdf}
+%		\caption*{Proposed architecture of resources forecasting system}
+%		\label{fig:overall}
+%	\end{figure}
+%\end{frame}
+
 \subsection{Preprocessor}
 \begin{frame}{Preprocessor}
 	\begin{figure}
@@ -351,6 +353,14 @@ Name & Polynomial functions \\
 
 \end{frame}
 
+\subsection{GA}
+\begin{frame}{Genetic Algorithm}
+	\begin{figure}
+		\includegraphics[width=0.45 \textwidth]{slide-GA-algo.png} %[width=9cm,height=5cm]
+		\label{fig:ga}			
+	\end{figure}
+\end{frame}
+
 \section{Experiments}
 \subsection{Experimental setup}
 \begin{frame}{Experimental setup}
@@ -374,8 +384,8 @@ Name & Polynomial functions \\
 \end{frame}
 
 
-\subsection{Forecasting Resource Consumption with Multivariate Input Data}
-\begin{frame}{Forecasting Resource Consumption with Multivariate InputData}
+\subsection{Forecasting Resource Consumption}
+\begin{frame}{Forecasting Resource Consumption}
 \begin{notesize}
 \begin{table}[h]
 	\caption{MAE comparison of MLNN, traditional FLNN and FL-GANN models}
@@ -418,7 +428,6 @@ Name & Polynomial functions \\
 
 \end{frame}
 
-	
 
 
 \subsection{Influence of GA hyper-parameter on FL-GANN}
@@ -507,19 +516,19 @@ Name & Polynomial functions \\
 \begin{frame}{Conclusion and future work}
 	\begin{itemize}
 		\item {
-		We proposed a new prediction system for cloud proactive auto-scaling service focusing on exploiting multivariate monitoring data
+		Proposed a new prediction system with experiments for cloud proactive auto-scaling service focusing on exploiting multivariate monitoring data
 		}
 		\item{
-			We proposed several mechanisms to improve accuracy as well as effectiveness of the resource usage prediction model
+			Several mechanisms to improve accuracy as well as effectiveness of the resource usage prediction model using
 			\begin{itemize}
 			\item {
-				A novel cloud resource prediction system using Functional-link Neural Network.
+				Functional-link Neural Network (FLNN)
 			}
 			\item {
-				Proposed the use of Genetic Algorithm to train the FLNN to overcome drawbacks of traditional FLNN, so called FL-GANN.
+				Genetic Algorithm (GA) to train the FLNN instead of traditional BP (called FL-GANN)
 			}
 			\item{
-				Analyze the influence of GA parameters as well as Functional-Link to FL-GANN.
+				Analyze the influence of GA parameters and FLNN to FL-GANN
 			}
 		\end{itemize}
 		}
