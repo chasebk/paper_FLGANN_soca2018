@@ -1,10 +1,18 @@
 # soca2018_flgann
 
-Conf Link: http://conferences.computer.org/soca/2018/paper_submission.htm
+- Conf Link: http://conferences.computer.org/soca/2018/paper_submission.htm
+- Template:   https://www.ieee.org/conferences/publishing/templates.html
 
-Template:   https://www.ieee.org/conferences/publishing/templates.html
+- Submit: 31/7/2018 
+- Accepted: 2/10/2018
 
-## Code mẫu:
+- Date of Conference: 20-22 tháng 11 năm 2018 tại Paris
+- Date Added to IEEE Xplore: 3/1/2019
+
+- Bài đầu tiên viết, hội nghị rank C, được reviewer chỉ ra nhiều điểm còn thiếu sót.
+- Link IEEE: https://ieeexplore.ieee.org/document/8599578
+
+## Cách sử dụng repo paper:
 1. File example.tex là mã nguồn ví dụ 
 2. File example.pdf là bản dịch từ mã nguồn ví dụ latex ra pdf 
 3. IEEEtran_HOWTO.pdf là hướng dẫn sử dụng và viết latex của IEEE 
